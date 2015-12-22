@@ -45,3 +45,30 @@ page).
 A webpack config file more suitable for production. It doesn't include the
 hot-loaders and doesn't configure the dev server. Basically, it's stripped down to
 just build and get out of the way. Use this with the command `npm run prod`. 
+
+## `index.jsx`
+
+This functions as the main entry point for the app. It is also where the store is
+created from our reducers and some middleware. In a larger app where you might have
+multiple reducers combined, you would likely make a store-creating function in a
+different file and then import it here. I've also included a store with Thunk
+middleware so that this app will be ready to go with async actions in the action
+creators (in `actions/index.jsx`), which requires Thunk middleware so that an
+action creator can return a function rather than an object as it normally would.
+
+## `actions/index.jsx`
+
+Action types are declared and exported at the top, along with the app's initial
+state, and these are followed by action creators. The only action creator of note
+is `performAsyncAction` which demonstrates the pattern to use with Thunk middleware
+and async actions. Typically, this would be something like an API call rather than
+a `setTimeout`, which I've used for an example. 
+
+The basic idea is that this kind of action creator returns a function which takes
+the `dispatch` function as callback. If first dispatches the action which tells the
+app that the async action has begun. This action might (in the reducer) change a
+prop called 'isFetching' from `false` to `true`. It then is set up to dispatch
+other action creators as well. If this were an api call with success and error
+callbacks (Promises) you might dispatch a `apiSuccess` action creator in the
+success callback and a `apiError` action creator in the error callback. All of this
+is so that when the async action completes, the state is updated accordingly. 
