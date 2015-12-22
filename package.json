@@ -1,7 +1,7 @@
 {
   "name": "your-apps-name",
   "version": "0.1.0",
-  "description": "",
+  "description": "Simple boilerplate for react/redux apps",
   "main": "index.jsx",
   "scripts": {
     "prod": "webpack -p --config webpack.production.config.js",
