@@ -89,3 +89,8 @@ being connected to Redux. It does this with `bindActionCreators`, which allows f
 an action creator to be called and `dispatch` to the store without the component
 inside of which it is called needing to itself call `dispatch` on the action (the
 `dispatch` method is given to connected components). 
+
+## `src/components/ExampleComponent.jsx` 
+
+A very simple component that includes a click handler to illustrate how an action
+creator passed down using `bindActionCreators` could be used. 

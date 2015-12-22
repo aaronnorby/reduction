@@ -10,7 +10,11 @@ class App extends Component {
   render() {
     return (
       <div>
-        <ExampleComponent data={this.props.data} actionOne={this.props.actions.actionOne} />
+        <ExampleComponent 
+          data={this.props.data} 
+          actionOne={this.props.actions.actionOne}
+          someProp={this.props.someProp}
+        />
       </div>
     )   
   }
@@ -18,8 +22,9 @@ class App extends Component {
 
 App.propTypes = {
   actions: PropTypes.object.isRequired,
-  data: PropTypes.object.isRequired,
-  performAsyncAction: PropTypes.func.isRequired
+  data: PropTypes.string.isRequired,
+  performAsyncAction: PropTypes.func.isRequired,
+  someProp: PropTypes.string.isRequired
 }
 
 
