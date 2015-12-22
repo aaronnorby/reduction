@@ -72,3 +72,12 @@ other action creators as well. If this were an api call with success and error
 callbacks (Promises) you might dispatch a `apiSuccess` action creator in the
 success callback and a `apiError` action creator in the error callback. All of this
 is so that when the async action completes, the state is updated accordingly. 
+
+## `reducers/reducer.js` 
+
+Template for standard Redux reducer, including handling of async requests with
+switching on and off an `isFetching` state prop. Note that I'm simply using
+`Object.assign` to create new states and keep the code functional, rather than a
+library like `Immutable.js`. 
+
+
