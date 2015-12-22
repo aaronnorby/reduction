@@ -94,3 +94,8 @@ inside of which it is called needing to itself call `dispatch` on the action (th
 
 A very simple component that includes a click handler to illustrate how an action
 creator passed down using `bindActionCreators` could be used. 
+
+## `src/styles/`
+
+A css reset in included because I use them sometimes. Otherwise it's just a more or
+less empty stylesheet. 
