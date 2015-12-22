@@ -1,9 +1,13 @@
 import {
   ACTION_ONE,
   ASYNC_ACTION_START,
-  ASYNC_ACTION_END,
-  INITIAL_STATE
+  ASYNC_ACTION_END
 } from '../actions/index'; 
+
+const INITIAL_STATE = { 
+  someProp: 'default',
+  data: '',
+  isFetching: false };
 
 export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {

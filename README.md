@@ -46,7 +46,7 @@ A webpack config file more suitable for production. It doesn't include the
 hot-loaders and doesn't configure the dev server. Basically, it's stripped down to
 just build and get out of the way. Use this with the command `npm run prod`. 
 
-## `index.jsx`
+## `src/index.jsx`
 
 This functions as the main entry point for the app. It is also where the store is
 created from our reducers and some middleware. In a larger app where you might have
@@ -56,13 +56,14 @@ middleware so that this app will be ready to go with async actions in the action
 creators (in `actions/index.jsx`), which requires Thunk middleware so that an
 action creator can return a function rather than an object as it normally would.
 
-## `actions/index.jsx`
+## `src/actions/index.jsx`
 
-Action types are declared and exported at the top, along with the app's initial
-state, and these are followed by action creators. The only action creator of note
-is `performAsyncAction` which demonstrates the pattern to use with Thunk middleware
-and async actions. Typically, this would be something like an API call rather than
-a `setTimeout`, which I've used for an example. 
+Action types are declared and exported at the top and these are followed by action
+creators. Note that in a larger app you might want to have all the action types
+declared in a `constants` file and them imported. The only action creator of note is `performAsyncAction` which
+demonstrates the pattern to use with Thunk middleware and async actions. Typically,
+this would be something like an API call rather than a `setTimeout`, which I've
+used for an example. 
 
 The basic idea is that this kind of action creator returns a function which takes
 the `dispatch` function as callback. If first dispatches the action which tells the
@@ -73,11 +74,18 @@ callbacks (Promises) you might dispatch a `apiSuccess` action creator in the
 success callback and a `apiError` action creator in the error callback. All of this
 is so that when the async action completes, the state is updated accordingly. 
 
-## `reducers/reducer.js` 
+## `src/reducers/reducer.js` 
 
 Template for standard Redux reducer, including handling of async requests with
 switching on and off an `isFetching` state prop. Note that I'm simply using
 `Object.assign` to create new states and keep the code functional, rather than a
 library like `Immutable.js`. 
 
+## `src/containers/App.jsx`
 
+Connects the main app to the Redux store and also binds one of the action creators
+so that it can be passed down to a child component without that child component
+being connected to Redux. It does this with `bindActionCreators`, which allows for
+an action creator to be called and `dispatch` to the store without the component
+inside of which it is called needing to itself call `dispatch` on the action (the
+`dispatch` method is given to connected components). 

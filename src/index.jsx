@@ -4,7 +4,7 @@ import thunkMiddleware                   from 'redux-thunk';
 import { createStore, applyMiddleware }  from 'redux';
 import { Provider }                      from 'react-redux';
 import reducer                           from './reducers/reducer';
-import { AppContainer }                  from './containers/app';
+import { App }                           from './containers/App';
 
 // because we're using webpack to bundle and process with sass: 
 require('./styles/main.scss');
@@ -16,7 +16,7 @@ const store = createStoreWithMiddleware(reducer);
 
 ReactDOM.render(
   <Provider store={store}>  
-    <AppContainer />
+    <App />
   </Provider>,
   document.getElementById('app')
 );

@@ -31,7 +31,7 @@ export function performAsyncAction() {
   return dispatch => {
     dispatch(startAsyncAction);
     setTimeout(function() {
-      let payload = 'fakepayload';
+      let payload = 'Hello from app!';
       dispatch(endAsyncAction(payload));
     }, 0);
   }
