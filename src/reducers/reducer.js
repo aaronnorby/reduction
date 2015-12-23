@@ -16,7 +16,7 @@ export default function reducer(state = INITIAL_STATE, action) {
     case ASYNC_ACTION_START:
       return Object.assign({}, state, {isFetching: true});
     case ASYNC_ACTION_END:
-      return Object.assing({}, state, {isFetching: false, data: action.returnedData});
+      return Object.assign({}, state, {isFetching: false, data: action.returnedData});
     default: 
       return state;
   }

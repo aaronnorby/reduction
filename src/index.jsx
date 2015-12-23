@@ -4,7 +4,7 @@ import thunkMiddleware                   from 'redux-thunk';
 import { createStore, applyMiddleware }  from 'redux';
 import { Provider }                      from 'react-redux';
 import reducer                           from './reducers/reducer';
-import { App }                           from './containers/App';
+import App                               from './containers/App';
 
 // because we're using webpack to bundle and process with sass: 
 require('./styles/main.scss');

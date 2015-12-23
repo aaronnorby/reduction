@@ -1,8 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { bindActionCreators }          from 'redux';
 import { connect }                     from 'react-redux';
-import { performAsyncAction }          from '../actions/index';
-import { actionOne }                   from '../actions/index';
+import * as ActionCreators                   from '../actions/index';
 import ExampleComponent                from '../components/ExampleComponent';
 
 class App extends Component {
@@ -13,6 +12,7 @@ class App extends Component {
         <ExampleComponent 
           data={this.props.data} 
           actionOne={this.props.actions.actionOne}
+          asyncAction={this.props.actions.performAsyncAction}
           someProp={this.props.someProp}
         />
       </div>
@@ -23,7 +23,6 @@ class App extends Component {
 App.propTypes = {
   actions: PropTypes.object.isRequired,
   data: PropTypes.string.isRequired,
-  performAsyncAction: PropTypes.func.isRequired,
   someProp: PropTypes.string.isRequired
 }
 
@@ -35,8 +34,10 @@ function mapStateToProps(state) {
 
 function mapActionCreatorsToProps(dispatch) {
   return {
-    actions: bindActionCreators(actionOne, dispatch)
+    actions: bindActionCreators(ActionCreators, dispatch),
   }
 }
 
-export default connect(mapStateToProps, {performAsyncAction})(App);
+export default connect(
+    mapStateToProps, 
+    mapActionCreatorsToProps)(App);

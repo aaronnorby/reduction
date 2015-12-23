@@ -3,7 +3,24 @@
 Simple-ish boilerplate for react/redux applications using Webpack as the build
 tool. Includes an `.eslintrc` file for those using ESLint as their linter.
 
-What follows are notes about the various files. 
+What follows are usage guides and then notes about the various files. 
+
+## Usage 
+
+First clone this repo and cd into the root of the project. Then 
+```
+npm install
+```
+then 
+```
+webpack-dev-server
+```
+then go to `localhost:8080`. Everything is working if you see the word 'default' on
+the screen and if clicking it changes what you see to 
+```
+Hello from app!
+new prop
+```
 
 ## `package.json`
 
@@ -83,17 +100,18 @@ library like `Immutable.js`.
 
 ## `src/containers/App.jsx`
 
-Connects the main app to the Redux store and also binds one of the action creators
-so that it can be passed down to a child component without that child component
-being connected to Redux. It does this with `bindActionCreators`, which allows for
-an action creator to be called and `dispatch` to the store without the component
+Connects the main app to the Redux store and also binds action creators so that
+they can be passed down to a child component without that child component being
+connected to Redux. It does this with `bindActionCreators`, which allows for an
+action creator to be called and `dispatch` to the store without the component
 inside of which it is called needing to itself call `dispatch` on the action (the
 `dispatch` method is given to connected components). 
 
 ## `src/components/ExampleComponent.jsx` 
 
 A very simple component that includes a click handler to illustrate how an action
-creator passed down using `bindActionCreators` could be used. 
+creator passed down using `bindActionCreators` could be used. It also calls the
+stand-in async action on click.  
 
 ## `src/styles/`
 
