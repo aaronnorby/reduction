@@ -5,7 +5,7 @@ import {
 } from '../actions/index'; 
 
 const INITIAL_STATE = { 
-  someProp: 'default',
+  someProp: 'old prop',
   data: '',
   isFetching: false };
 
