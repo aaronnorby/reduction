@@ -115,5 +115,5 @@ stand-in async action on click.
 
 ## `src/styles/`
 
-A css reset in included because I use them sometimes. Otherwise it's just a more or
+Just placeholder scss files. A css reset is included because I use them sometimes. Otherwise it's just a more or
 less empty stylesheet. 
