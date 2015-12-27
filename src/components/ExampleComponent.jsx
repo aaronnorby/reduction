@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import { performAsyncAction }          from '../actions/index';
 
 export default class ExampleComponent extends Component {
   
