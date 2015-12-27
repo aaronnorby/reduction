@@ -28,7 +28,8 @@ module.exports = {
   },
   devServer: {
     contentBase: './dist',
-    hot: true
+    hot: true,
+    historyApiFallback: true // deals with 404 errors when navigating to non-root routes
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
