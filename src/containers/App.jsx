@@ -29,7 +29,7 @@ App.propTypes = {
 
 // connect App to redux store and export the connected version
 function mapStateToProps(state) {
-  return state;
+  return state.main;
 }
 
 function mapActionCreatorsToProps(dispatch) {
