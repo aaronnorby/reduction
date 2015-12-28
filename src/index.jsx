@@ -15,6 +15,9 @@ import Another from './components/AnotherComponent';
 // because we're using webpack to bundle and process with sass: 
 require('./styles/main.scss');
 
+// add in routing reducer to enable use of redux-simple router. Note that now state
+// info is within the namespace of `state.main` with this (see `App.jsx` where this
+// is used inside of of `mapStateToProps`
 const finalReducer = combineReducers(Object.assign({}, {
   main: reducer,
   routing: routeReducer
@@ -25,6 +28,7 @@ const createStoreWithMiddleware = applyMiddleware(thunkMiddleware)(createStore);
 
 const store = createStoreWithMiddleware(finalReducer);
 
+// enables browser history without hash routes
 let history = createHistory();
 
 syncReduxAndRouter(history, store);
