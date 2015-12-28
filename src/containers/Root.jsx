@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
-export default class AppContainer extends Component {
+export default class Root extends Component {
   render() {
     return (
         <div>
@@ -12,4 +12,11 @@ export default class AppContainer extends Component {
         </div>
     )
   }
+}
+
+Root.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ])
 }

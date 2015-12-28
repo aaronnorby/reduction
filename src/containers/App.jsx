@@ -28,6 +28,7 @@ class App extends Component {
 App.propTypes = {
   actions: PropTypes.object.isRequired,
   data: PropTypes.string.isRequired,
+  pushPath: PropTypes.func.isRequired,
   someProp: PropTypes.string.isRequired
 }
 

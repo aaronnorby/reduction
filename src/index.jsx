@@ -9,7 +9,7 @@ import { syncReduxAndRouter, routeReducer } from 'redux-simple-router';
 
 import reducer                           from './reducers/reducer';
 import App                               from './containers/App';
-import AppContainer from './containers/AppContainer';
+import Root from './containers/Root';
 import Another from './components/AnotherComponent';
 
 // because we're using webpack to bundle and process with sass: 
@@ -32,7 +32,7 @@ syncReduxAndRouter(history, store);
 ReactDOM.render(
   <Provider store={store}>  
     <Router history={history}>
-      <Route path="/" component={AppContainer}>
+      <Route path="/" component={Root}>
         <Route path="app" component={App}/>
         <Route path="another" component={Another}/>
       </Route>
