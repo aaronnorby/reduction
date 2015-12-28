@@ -73,6 +73,10 @@ middleware so that this app will be ready to go with async actions in the action
 creators (in `actions/index.jsx`), which requires Thunk middleware so that an
 action creator can return a function rather than an object as it normally would.
 
+Note the addition of a `routing` reducer that enables the use of
+`redux-simple-router` to enable things like the `pushPath` action creator (which is
+passed to our main App element) and keeping the Redux store and routes in sync.
+
 ## `src/actions/index.jsx`
 
 Action types are declared and exported at the top and these are followed by action
@@ -106,6 +110,15 @@ connected to Redux. It does this with `bindActionCreators`, which allows for an
 action creator to be called and `dispatch` to the store without the component
 inside of which it is called needing to itself call `dispatch` on the action (the
 `dispatch` method is given to connected components). 
+
+Also contains an example usage of `redux-simple-router`'s `pushPath` action
+creator, which can be used to change routes from inside a component without the use
+of React Router's `Link` components. 
+
+## `src/containers/Root.jsx`
+
+Serves as the root route for our React router routing scheme. Also contains example
+usages of `Link` elements for changing routes. 
 
 ## `src/components/ExampleComponent.jsx` 
 
