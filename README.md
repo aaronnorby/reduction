@@ -123,4 +123,26 @@ less empty stylesheet.
 
 # Testing 
 
+A testing framework is set up to use Karma as the test runner and mocha/chai as the
+actual test framework/assertion library. This involves using karma-webpack to allow
+Karma to work with Webpack. Included as well is `karma-chai-plugins` which brings
+along chai, chai-as-promised, sinon-chai, and others, all loaded in `karma.conf.js`
+with `karma-chai-plugins`. 
+
+There are very few tests included - they're they just to show the boilerplate and
+test framework are set up correctly and provide some patterns for more tests. Since
+this is boilerplate, extensive testing makes less sense. 
+
+To run the tests, from root of project do `npm test` (or `karma start` if you
+prefer). 
+
+One Webpack specific thing about the way we're using Karma is to be found in the
+`tests.bundle.js` file. This file bundles allows Webpack to bundle all our test
+files into one so tests can be run against them (this bundle is loaded as a
+separate 'chunk' from our main app bundle). This is the only entry file we need to
+put in `karma.conf.js` -- to add new test files all we need to do is make sure they
+match the file glob given in `tests.bundle.js`, which in this case is
+`*.spec.jsx?$`, that is, a filename that ends with either `.spec.js` or
+`.spec.jsx`. 
+
 
