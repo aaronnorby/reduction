@@ -1,7 +1,7 @@
 import React from 'react';
 import * as TestUtils from 'react-addons-test-utils';
 
-import ExampleComponent from '../src/components/ExampleComponent';
+import ExampleComponent from '../../src/components/ExampleComponent';
 
 describe('ExampleComponent', () => {
 
