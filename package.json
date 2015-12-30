@@ -1,5 +1,5 @@
 {
-  "name": "your-apps-name",
+  "name": "reduction",
   "version": "0.1.0",
   "description": "Simple boilerplate for react/redux apps",
   "main": "index.jsx",
@@ -8,8 +8,16 @@
     "start": "node server.js",
     "test": "karma start"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "react",
+    "redux",
+    "boilerplate"
+  ],
+  "author": "Aaron Norby",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aaronnorby/reduction"
+  },
   "license": "MIT",
   "devDependencies": {
     "karma": "^0.13.16",
