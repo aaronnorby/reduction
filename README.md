@@ -16,6 +16,11 @@ npm install
 ```
 then 
 ```
+npm run dev
+```
+or 
+
+```
 webpack-dev-server
 ```
 then go to `localhost:8080`. Everything is working if you see the word 'default' on
