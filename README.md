@@ -3,8 +3,10 @@
 Simple-ish boilerplate for react/redux applications using Webpack as the build
 tool. Includes an `.eslintrc` file for those using ESLint as their linter.
 
-Check out the `with-react-router` branch for boilerplate using React Router and
-[redux-simple-router](https://github.com/rackt/redux-simple-router). 
+Other branches include different features. The master branch is the simplest
+implementation. Check out the `with-react-router` branch for boilerplate using React Router and
+[redux-simple-router](https://github.com/rackt/redux-simple-router). And the
+`devtools` branch includes React DevTools bundled in the boilerplate.
 
 What follows are usage guides and then notes about the various files. 
 
