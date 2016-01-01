@@ -22,5 +22,13 @@ module.exports = {
     path: './dist',
     filename: 'bundle.js'
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': "'production'"
+      }
+    })
+  ]
+
 };
 
