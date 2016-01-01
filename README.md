@@ -3,6 +3,10 @@
 Simple-ish boilerplate for react/redux applications using Webpack as the build
 tool. Includes an `.eslintrc` file for those using ESLint as their linter.
 
+This version bundles [Redux DevTools](https://github.com/gaearon/redux-devtools)
+with the app, and is configured to leave the DevTools out in production
+environments. 
+
 Check out the `with-react-router` branch for boilerplate using React Router and
 [redux-simple-router](https://github.com/rackt/redux-simple-router). 
 
@@ -71,15 +75,59 @@ A webpack config file more suitable for production. It doesn't include the
 hot-loaders and doesn't configure the dev server. Basically, it's stripped down to
 just build and get out of the way. Use this with the command `npm run prod`. 
 
-## `src/index.jsx`
+Included is a configuration for `DefinePlugin` to make sure that
+`process.env.NODE_ENV` is set to `'production'` so that we can conditionally render
+Redux DevTools and take it out when we're in production.
 
-This functions as the main entry point for the app. It is also where the store is
-created from our reducers and some middleware. In a larger app where you might have
-multiple reducers combined, you would likely make a store-creating function in a
-different file and then import it here. I've also included a store with Thunk
-middleware so that this app will be ready to go with async actions in the action
-creators (in `actions/index.jsx`), which requires Thunk middleware so that an
-action creator can return a function rather than an object as it normally would.
+## `src/store/`
+
+This directory contains `configureStore.js`, `configureStore.dev.js`, and
+`configureStore.prod.js`. The job of `configureStore.js` is only to conditionally
+load one of the other two, depending on when `process.env.NODE_ENV` is set to
+`production`. 
+
+Then, `configureStore.dev.js` creates a store that's bundled with Redux DevTools
+(which we configure and export in `containers/DevTools.jsx`) and exports the
+resulting store-generating function so it can be used by our index file to produce
+a store instance and pass it to our Provider. 
+
+`configureStore.prod.js` renders our normal store without DevTools. 
+
+In both cases, I've also included a store with Thunk middleware so that this app
+will be ready to go with async actions in the action creators (in
+`actions/index.jsx`), which requires Thunk middleware so that an action creator can
+return a function rather than an object as it normally would.
+
+## `src/index.jsx` 
+
+This functions as the main entry point for the app. It renders whichever root
+component is exported from `RootIndex`, uses the `configureStore` function to
+create our store, and passes that as a prop to the root component. 
+
+## `src/root*.jsx` 
+
+The file `rootIndex.jsx` conditionally loads our root component, either one with
+DevTools included or without it, depending on our environment. This is then
+consumed by our main `index.jsx`. 
+
+The file `root.dev.jsx` creates a root component with a Redux Provider that bundles
+in our DevTools component. `rood.prod.jsx` is the same but leaves out the DevTools
+for production environments. 
+
+
+## `src/containers/DevTools.jsx` 
+
+Configures and exports a Redux DevTools component. It uses two basic monitors,
+`DockMonitor` and `LogMonitor` to keep track of state and actions and display them
+in a dock laid over our app. 
+
+## `src/utils/showDevTools.js` 
+
+This utility isn't being used, but it can be used to put the DevTools component
+into a popup window instead of rendering it in our app. If this is preferred, it
+only has to be called from inside `index.jsx`. Although it's not being used as the
+app is currently configured, I'm including it in case my preferences change. 
+
 
 ## `src/actions/index.jsx`
 
