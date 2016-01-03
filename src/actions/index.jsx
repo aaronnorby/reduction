@@ -29,7 +29,7 @@ function endAsyncAction(payload) {
 
 export function performAsyncAction() {
   return dispatch => {
-    dispatch(startAsyncAction);
+    dispatch(startAsyncAction());
     setTimeout(function() {
       let payload = 'Hello from app!';
       dispatch(endAsyncAction(payload));
