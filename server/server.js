@@ -1,12 +1,23 @@
 import path from 'path';
 import express from 'express';
 
+import webpack from 'webpack';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+import webpackConfig from '../webpack.config';
+
 import handleRender from './serverSideRenderer';
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(express.static(path.join(__dirname, '../', '/dist')));
+const compiler = webpack(webpackConfig);
+app.use(webpackDevMiddleware(compiler, { 
+  noInfo: true, 
+  publicPath: webpackConfig.output.publicPath }));
+app.use(webpackHotMiddleware(compiler));
+
+//app.use(express.static(path.join(__dirname, '../', '/dist')));
 app.get('/', handleRender);
 
 
