@@ -4,7 +4,7 @@
   "description": "Simple boilerplate for react/redux apps",
   "main": "index.jsx",
   "scripts": {
-    "prod": "webpack -p --config webpack.production.config.js",
+    "prod": "webpack -p --config webpack.production.config.js && NODE_ENV=production npm start",
     "start": "node server/index.js",
     "test": "karma start"
   },
