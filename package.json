@@ -6,7 +6,6 @@
   "scripts": {
     "prod": "webpack -p --config webpack.production.config.js",
     "start": "node server/index.js",
-    "dev": "webpack --progress --watch --no-info",
     "test": "karma start"
   },
   "keywords": [

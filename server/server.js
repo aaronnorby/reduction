@@ -11,13 +11,16 @@ import handleRender from './serverSideRenderer';
 const app = express();
 const port = process.env.PORT || 3000;
 
-const compiler = webpack(webpackConfig);
-app.use(webpackDevMiddleware(compiler, { 
-  noInfo: true, 
-  publicPath: webpackConfig.output.publicPath }));
-app.use(webpackHotMiddleware(compiler));
+if (process.env.NODE_ENV !== 'production') {
+  const compiler = webpack(webpackConfig);
+  app.use(webpackDevMiddleware(compiler, { 
+    noInfo: true, 
+    publicPath: webpackConfig.output.publicPath }));
+  app.use(webpackHotMiddleware(compiler));
+} else {
+  app.use(express.static(path.join(__dirname, '../', '/dist')));
+}
 
-//app.use(express.static(path.join(__dirname, '../', '/dist')));
 app.get('/', handleRender);
 
 
