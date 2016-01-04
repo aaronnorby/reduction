@@ -1,17 +1,15 @@
 var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
-  devtool: 'eval',
   entry: [
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
-    './src/index.jsx'
+    './src/client/index.jsx'
   ],
   module: {
     loaders: [{
       test: /\.jsx?$/,
       exclude: /node_modules/,
-      loader: 'react-hot!babel'
+      loader: 'babel'
     },
     {
       test: /\.scss$/,
@@ -22,16 +20,16 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
   output: {
-    path: __dirname + '/dist',
-    publicPath: '/',
+    path: './dist',
     filename: 'bundle.js'
   },
-  devServer: {
-    contentBase: './dist',
-    hot: true
-  },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': "'development'"
+      }
+    })
   ]
+
 };
 

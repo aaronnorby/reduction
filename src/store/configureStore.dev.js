@@ -8,8 +8,8 @@ const finalCreateStore = compose(
     DevTools.instrument()
 )(createStore);
 
-export default function configureStore() {
-  const store = finalCreateStore(reducer);
+export default function configureStore(initialState) {
+  const store = finalCreateStore(reducer, initialState);
 
   return store;
 }  

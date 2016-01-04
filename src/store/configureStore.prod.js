@@ -6,6 +6,6 @@ const finalCreateStore = compose(
     applyMiddleware(thunkMiddleware)
 )(createStore);
 
-export default function configureStore() {
-  return finalCreateStore(reducer);
+export default function configureStore(initialState) {
+  return finalCreateStore(reducer, initialState);
 }
