@@ -29,6 +29,8 @@ function renderFullPage(html, initialState) {
 
         <title>Reduction boilerplate</title>
 
+        <link rel="stylesheet" href="styles.css" type="text/css">
+
       </head>
       <body>
         <div id="app">${html}</div>
