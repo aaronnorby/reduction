@@ -6,7 +6,10 @@ tool. Includes an `.eslintrc` file for those using ESLint as their linter.
 Other branches include different features. The master branch is the simplest
 implementation. Check out the `with-react-router` branch for boilerplate using React Router and
 [redux-simple-router](https://github.com/rackt/redux-simple-router). And the
-`devtools` branch includes React DevTools bundled in the boilerplate.
+`devtools` branch includes Redux DevTools bundled in the boilerplate. 
+
+The `devtools-serverSide` branch uses both server-side rendering as well as
+DevTools. 
 
 What follows are usage guides and then notes about the various files. 
 
