@@ -1,4 +1,6 @@
 var webpack = require('webpack');
+// in production, we're going to take the css out and put it in its own file so
+// that there's no fouc on first render from server-rendered markup
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
 

@@ -1,8 +1,8 @@
 import { renderToString } from 'react-dom/server';
-import React from 'react';
+import React              from 'react';
 
-import configureStore from '../src/store/configureStore';
-import Root from '../src/rootIndex';
+import configureStore     from '../src/store/configureStore';
+import Root               from '../src/rootIndex';
 
 export default function handleRender(req, res) {
   const store = configureStore();
