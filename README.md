@@ -3,9 +3,9 @@
 Simple-ish boilerplate for react/redux applications using Webpack as the build
 tool. Includes an `.eslintrc` file for those using ESLint as their linter.
 
-This version bundles [Redux DevTools](https://github.com/gaearon/redux-devtools)
-with the app, and is configured to leave the DevTools out in production
-environments. 
+This version uses server-side rendering and bundles [Redux
+DevTools](https://github.com/gaearon/redux-devtools) with the app, and is
+configured to leave the DevTools out in production environments. 
 
 Check out the `with-react-router` branch for boilerplate using React Router and
 [redux-simple-router](https://github.com/rackt/redux-simple-router). 
@@ -54,9 +54,26 @@ dependency of `sass-loader`).
 
 Finally, the script `prod` which you would run from the command line using `npm run
 prod` causes Webpack to bundle using the `webpack.production.config.js` config
-file, which leaves things like hot module replacement and webpack-dev-server out of
-it. So, you use this to bundle for production and just plain old `webpack` (or
-`webpack-dev-server` on the command line to bundle in development. 
+file, which leaves things like hot module replacement out of
+it. So, you use this to bundle for production and just plain old `npm start` on the
+command line to bundle in development and start the server. The `prod`
+script also starts the server with `NODE_ENV` set to `production` -- this ensures
+that the right files are included/excluded, for example DevTools will be left out
+(and the dead code eliminated from the resulting bundle).
+
+## `server/`
+
+The server code does a few things. First, it starts up a basic Node/Express server.
+Second, if `process.env.NODE_ENV` is not `production`, it will include
+`webpack-dev-middleware` and `webpack-hot-middleware` in the Express application
+for hot module replacement. This is left out and Express `static` is simply used
+when in production (which is set in the `npm run prod` script). 
+
+Finally, the server does some server-side rendering of our React/Redux app.
+Basically, it just builds the first view using `serverSideRenderer.js` and sends
+the raw html over for any request to root. For more on server-side rendering with
+React and Redux, see the Redux docs
+[here](http://rackt.org/redux/docs/recipes/ServerRendering.html). 
 
 ## `webpack.config.js` 
 
@@ -78,6 +95,14 @@ just build and get out of the way. Use this with the command `npm run prod`.
 Included is a configuration for `DefinePlugin` to make sure that
 `process.env.NODE_ENV` is set to `'production'` so that we can conditionally render
 Redux DevTools and take it out when we're in production.
+
+It also uses the `extract-text-webpack-plugin`. This is configured to pull the
+css/scss out of the bundle and put it in its own styles bundle so that a link can
+be included to it in the index html page as you traditionally would. This allows
+the first server-generated markup to be rendered with your custom styles instead of
+having a flash of unstyled content before the JavaScript application is
+bootstrapped. 
+
 
 ## `src/store/`
 
