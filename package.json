@@ -1,6 +1,6 @@
 {
   "name": "reduction",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Simple boilerplate for react/redux apps",
   "main": "index.jsx",
   "scripts": {
@@ -31,7 +31,19 @@
     "react-addons-test-utils": "^0.14.3",
     "react-hot-loader": "^1.3.0",
     "redux-mock-store": "0.0.4",
-    "webpack-dev-server": "^1.14.0"
+    "webpack-dev-server": "^1.14.0",
+    "redux-devtools": "3.3.1",
+    "redux-devtools-log-monitor": "1.0.11",
+    "sass-loader": "^3.1.2",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.9",
+    "babel-core": "^6.3.21",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "css-loader": "^0.23.0",
+    "node-sass": "^3.4.2",
+    "react-addons-test-utils": "15.3.1"
   },
   "babel": {
     "presets": [
@@ -40,20 +52,11 @@
     ]
   },
   "dependencies": {
-    "babel-core": "^6.3.21",
-    "babel-loader": "^6.2.0",
-    "babel-preset-es2015": "^6.3.13",
-    "babel-preset-react": "^6.3.13",
-    "css-loader": "^0.23.0",
-    "node-sass": "^3.4.2",
-    "react": "^0.14.3",
-    "react-dom": "^0.14.3",
-    "react-redux": "^4.0.1",
-    "redux": "^3.0.5",
-    "redux-thunk": "^1.0.2",
-    "sass-loader": "^3.1.2",
-    "style-loader": "^0.13.0",
-    "webpack": "^1.12.9"
+    "react": "15.3.1",
+    "react-dom": "15.3.1",
+    "react-redux": "4.4.5",
+    "redux": "3.5.2",
+    "redux-thunk": "^1.0.2"
   },
   "engines": {
     "node": "5.2.0"
