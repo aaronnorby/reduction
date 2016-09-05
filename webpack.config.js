@@ -34,9 +34,7 @@ module.exports = {
       'process.env': {
         'NODE_ENV': "'development'"
       }
-    }),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin()
+    })
   ]
 };
 
