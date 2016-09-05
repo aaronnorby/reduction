@@ -11,6 +11,7 @@ require('./styles/main.scss');
 // congifureStore can also take an initial state object, eg in the case os
 // server-side rendering window._INITIAL_STATE
 const store = configureStore(INITIAL_STATE);
+console.log("nothing");
 
 if (process.env.NODE_ENV === 'development') {
   window.devToolsExtension && window.devToolsExtension.open();

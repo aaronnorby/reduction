@@ -2,11 +2,9 @@ var webpack = require('webpack');
 
 module.exports = {
   devtool: 'eval',
-  entry: [
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
-    './src/index.jsx'
-  ],
+  entry: {
+    app: ['./src/index.jsx']
+  },
   module: {
     loaders: [{
       test: /\.jsx?$/,
@@ -36,7 +34,9 @@ module.exports = {
       'process.env': {
         'NODE_ENV': "'development'"
       }
-    })
+    }),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin()
   ]
 };
 
