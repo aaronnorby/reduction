@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path');
 
 module.exports = {
@@ -29,7 +31,10 @@ module.exports = {
       }
     }),
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin()
+    new webpack.optimize.UglifyJsPlugin(),
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    })
   ]
 };
 

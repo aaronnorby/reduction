@@ -29,6 +29,7 @@
     "del": "2.2.0",
     "gulp": "3.9.1",
     "gulp-util": "3.0.7",
+    "html-webpack-plugin": "2.22.0",
     "karma": "^0.13.16",
     "karma-chai-plugins": "^0.6.1",
     "karma-chrome-launcher": "^0.2.2",

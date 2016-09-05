@@ -1,4 +1,6 @@
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 module.exports = {
   devtool: 'eval',
@@ -34,6 +36,9 @@ module.exports = {
       'process.env': {
         'NODE_ENV': "'development'"
       }
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
     })
   ]
 };
