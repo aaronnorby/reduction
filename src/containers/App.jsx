@@ -9,14 +9,14 @@ class App extends Component {
   render() {
     return (
       <div>
-        <ExampleComponent 
-          data={this.props.data} 
+        <ExampleComponent
+          data={this.props.data}
           actionOne={this.props.actions.actionOne}
           asyncAction={this.props.actions.performAsyncAction}
           someProp={this.props.someProp}
         />
       </div>
-    )   
+    )
   }
 }
 
@@ -39,5 +39,5 @@ function mapActionCreatorsToProps(dispatch) {
 }
 
 export default connect(
-    mapStateToProps, 
+    mapStateToProps,
     mapActionCreatorsToProps)(App);

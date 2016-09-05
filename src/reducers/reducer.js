@@ -1,15 +1,17 @@
+import { combineReducers } from 'redux';
+
 import {
   ACTION_ONE,
   ASYNC_ACTION_START,
   ASYNC_ACTION_END
-} from '../actions/index'; 
+} from '../actions/index';
 
-const INITIAL_STATE = { 
+export const INITIAL_STATE = {
   someProp: 'old prop',
   data: '',
   isFetching: false };
 
-export default function reducer(state = INITIAL_STATE, action) {
+export function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case ACTION_ONE:
       return Object.assign({}, state, {someProp: action.someProp});
@@ -17,7 +19,13 @@ export default function reducer(state = INITIAL_STATE, action) {
       return Object.assign({}, state, {isFetching: true});
     case ASYNC_ACTION_END:
       return Object.assign({}, state, {isFetching: false, data: action.returnedData});
-    default: 
+    default:
       return state;
   }
 }
+
+// export default function makeRootReducer() {
+//   return combineReducers({
+//     reducer,
+//   });
+// }
