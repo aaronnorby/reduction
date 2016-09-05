@@ -15,7 +15,7 @@ module.exports = {
     },
     {
       test: /\.scss$/,
-      loader: 'style!css!sass'
+      loader: 'style!css?sourceMap!sass?sourceMap'
     }]
   },
   resolve: {
@@ -38,7 +38,8 @@ module.exports = {
       }
     }),
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './src/index.html',
+      hash: true
     })
   ]
 };
