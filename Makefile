@@ -5,3 +5,8 @@ run:
 
 clean:
 	  $(GULP) clean
+
+build:
+		$(GULP) build
+
+.PHONY: run clean build
