@@ -1,5 +1,3 @@
-import { combineReducers } from 'redux';
-
 import {
   ACTION_ONE,
   ASYNC_ACTION_START,
@@ -11,7 +9,7 @@ export const INITIAL_STATE = {
   data: '',
   isFetching: false };
 
-export function reducer(state = INITIAL_STATE, action) {
+export function exampleReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case ACTION_ONE:
       return Object.assign({}, state, {someProp: action.someProp});
@@ -23,9 +21,3 @@ export function reducer(state = INITIAL_STATE, action) {
       return state;
   }
 }
-
-// export default function makeRootReducer() {
-//   return combineReducers({
-//     reducer,
-//   });
-// }

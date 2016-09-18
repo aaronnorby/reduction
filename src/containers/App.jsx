@@ -10,10 +10,10 @@ class App extends Component {
     return (
       <div>
         <ExampleComponent
-          data={this.props.data}
+          data={this.props.example.data}
           actionOne={this.props.actions.actionOne}
           asyncAction={this.props.actions.performAsyncAction}
-          someProp={this.props.someProp}
+          someProp={this.props.example.someProp}
         />
       </div>
     )
@@ -22,19 +22,21 @@ class App extends Component {
 
 App.propTypes = {
   actions: PropTypes.object.isRequired,
-  data: PropTypes.string.isRequired,
-  someProp: PropTypes.string.isRequired
+  example: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired
 }
 
 
 // connect App to redux store and export the connected version
 function mapStateToProps(state) {
-  return state;
+  const { exampleReducer } = state;
+  return { example: exampleReducer };
 }
 
 function mapActionCreatorsToProps(dispatch) {
   return {
     actions: bindActionCreators(ActionCreators, dispatch),
+    dispatch: dispatch
   }
 }
 

@@ -1,6 +1,6 @@
 import * as TestUtils from 'react-addons-test-utils';
 
-import reducer from '../src/reducers/reducer';
+import { exampleReducer as reducer } from '../src/reducers/reducer';
 
 describe('reducer', () => {
   it('sets an initial state', () => {

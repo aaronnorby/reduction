@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 export default class ExampleComponent extends Component {
-  
+
   handleClick(e) {
     this.props.actionOne('new prop');
     this.props.asyncAction();
